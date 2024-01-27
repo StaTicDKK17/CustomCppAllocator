@@ -61,9 +61,9 @@ public:
 		}
 		else {
 			// chain blocks together
-			if (this->blockEnd != NULL) {
+			if (this->blockEnd != NULL) 
 				this->blockEnd->next = block;
-			}
+			
 			block->prev = this->blockEnd;
 			this->blockEnd = block;
 		}
@@ -94,13 +94,9 @@ public:
 
 	void free(word_t* size) {
 		auto block = getHeader(size);
-		//auto success = VirtualFree(block, 0, MEM_RELEASE);
 		block->used = false;
 
 		this->immediate_coalesing(block);
-		//if (!success) {
-		//	std::cout << "You fucked up..." << "\n";
-		//}
 	}
 
 private:
