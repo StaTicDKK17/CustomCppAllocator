@@ -72,8 +72,13 @@ public:
 	}
 
 	Block* requestFromOS(size_t size) {
-		auto mem = (Block*)VirtualAlloc(NULL, size, MEM_COMMIT, PAGE_READWRITE);
-
+		Block* mem;
+		
+#if _WIN32
+		mem = (Block*)VirtualAlloc(NULL, size, MEM_COMMIT, PAGE_READWRITE);
+#else
+		mem = (Block*)mmap(0);
+#endif
 		return mem;
 	}
 
@@ -134,6 +139,9 @@ int main(int argc, char const* argv[]) {
 
 	auto p4 = allocator.alloc(24);
 	auto p4b = allocator.getHeader(p4);
+
+	auto p5 = allocator.alloc(40);
+	auto p5b = allocator.getHeader(p5);
 
 
 	puts("\nAll assertions passed!\n");
