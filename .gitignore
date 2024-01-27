@@ -1,0 +1,7 @@
+CustomMemoryAllocator.sln
+/.vs
+/x64
+/CustomMemoryAllocator/x64
+/CustomMemoryAllocator/CustomMemoryAllocator.vcxproj
+/CustomMemoryAllocator/CustomMemoryAllocator.vcxproj.filters
+/CustomMemoryAllocator/CustomMemoryAllocator.vcxproj.user
